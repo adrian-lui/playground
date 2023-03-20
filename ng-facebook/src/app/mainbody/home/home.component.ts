@@ -1,18 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../mainbody.model';
+import { MainbodyService } from '../mainbody.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
-  private posts: Post[] = [];
+export class HomeComponent implements OnInit {
+  // @Input('emitNewPost') newPost: Post;
 
-  constructor() {}
+  // public newPost: Post;
+  public posts: Post[] = [];
 
-  onSubmitNewPost(e: Event) {
-    e.preventDefault();
-    console.log(e);
+  constructor(private mainService: MainbodyService) {
+    // this.newPost = { title: '', body: '' };
+  }
+
+  ngOnInit(): void {
+    this.posts = this.mainService.loadPosts();
+  }
+
+  onReceiveNewPost(post: Post) {
+    console.log(post);
+    this.posts = this.mainService.addPost(post);
   }
 }

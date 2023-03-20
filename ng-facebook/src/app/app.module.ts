@@ -19,6 +19,7 @@ import { LoginComponent } from './mainbody/login/login.component';
 import { PostComponent } from './mainbody/home/post/post.component';
 import { NewPostFormComponent } from './mainbody/home/new-post-form/new-post-form.component';
 import { ErrorComponent } from './mainbody/error/error.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { ErrorComponent } from './mainbody/error/error.component';
     NewPostFormComponent,
     ErrorComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
